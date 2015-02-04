@@ -1,4 +1,4 @@
-# Grid Learning: Max
+# Grid Studies: Max
 
 Max is... (INSERT HERE)
 
@@ -13,7 +13,7 @@ If you haven't yet run the Monome installer, do so first by going here:
 
 ## 1. Connect
 
-*See grid-learn-1-1.maxpat for this section.*
+*See grid-studies-1-1.maxpat for this section.*
 
 To communicate with grids we trade OSC messages with serialosc. serialosc is translates OSC messages to streams of numbers over USB.
 
@@ -23,7 +23,7 @@ Open Max and start a new patch.
 
 Create a new object (press N) and type `bpatcher serialosc` and then hit enter. A bpatcher window will appear, resize this to match the long rectangle.
 
-![](images/grid-learn-1-1-1.png)
+![](images/grid-studies-1-1-1.png)
 
 Plug in your grid and it will appear in the serialosc box. If you connect more than one grid, you can choose which device to communicate with via the dropdown.
 
@@ -35,7 +35,7 @@ Note: this box you've imbedded isn't serialosc itself, which is an invisible dae
 
 Messages are sent to serialosc through the top left inlet, and received out the bottom left outlet.
 
-*See grid-learn-2-1.maxpat for this section.*
+*See grid-studies-2-1.maxpat for this section.*
 
 
 ### 2.1 Key input
@@ -58,7 +58,7 @@ We now have a list of 3 numbers according to each key action. Use an unpack to b
 
 Connect the output of the route to this `matrixctrl` for a graphical display of the grid's key state.
 
-![](images/grid-learn-2-1-1.png)
+![](images/grid-studies-2-1-1.png)
 
 ### 2.2 LED output
 
@@ -80,7 +80,7 @@ To clear the entire grid, use the following message:
 
 	/monome/grid/led/all 0
 
-![](images/grid-learn-2-2-1.png)
+![](images/grid-studies-2-2-1.png)
 
 
 ### 2.3 Coupled interaction
@@ -93,7 +93,7 @@ to the `matrixctrl` which above serialosc which changes LEDs.
 
 You now have a coupled interface, where the key state is reflected by the the LEDs.
 
-![](images/grid-learn-2-3-1.png)
+![](images/grid-studies-2-3-1.png)
 
 ### 2.4 Decoupled interaction
 
@@ -111,7 +111,7 @@ By moving the key state (z, here as `$3`) to the front, the route object will on
 
 Connect this to the input of the `matrixctrl` and we have a toggle bank.
 
-![](images/grid-learn-2-4-1.png)
+![](images/grid-studies-2-4-1.png)
 
 
 
@@ -130,7 +130,7 @@ Now we'll show how basic grid applications are developed by creating a step sequ
 
 ### 3.1 Toggles
 
-*See grid-learn-3-1.maxpat for this step.*
+*See grid-studies-3-1.maxpat for this step.*
 
 This works identically to our previous "decoupled interaction" example, but we want to only use the first six rows. So we sort them out inside the /p keys/ subpatcher:
 
@@ -140,18 +140,18 @@ This works identically to our previous "decoupled interaction" example, but we w
 
 By switching the first and second elements and then putting them into the route object, rows 0-5 are passed to the right outlet. We'll then pass key-down messages only to the matrix toggling.
 
-![](images/grid-learn-3-1-1.png)
+![](images/grid-studies-3-1-1.png)
 
-![](images/grid-learn-3-1-2.png)
+![](images/grid-studies-3-1-2.png)
 
 
 ### 3.2 Play
 
-*See grid-learn-3-2.maxpat for this step.*
+*See grid-studies-3-2.maxpat for this step.*
 
 We can create a "play head" with a simple counter.
 
-![](images/grid-learn-3-2-1.png)
+![](images/grid-studies-3-2-1.png)
 
 To see the play position on the bottom row, we will turn on the corresponding LED position after first clearing the entire row. We can clear a row by using a new OSC message:
 
@@ -172,7 +172,7 @@ Now when you turn on the clock, you'll see the playhead moving along the bottom 
 
 ### 3.3 Triggers
 
-*See grid-learn-3-3.maxpat for this step.*
+*See grid-studies-3-3.maxpat for this step.*
 
 As the playhead moves we will read the contents of the corresponding column and trigger events based on which toggles are turned on.
 
@@ -182,7 +182,7 @@ To indicate an "event" we will light up the corresponding x position in the 6th 
 
 	/monome/grid/led/set $1 6 1
 
-![](images/grid-learn-3-3-1.png)
+![](images/grid-studies-3-3-1.png)
 
 Similarly to the play position display, we need to clear the row between refreshes. But since more than one event can be displayed per step, we'll want to clear only once per group of triggers. We can accomplish the desired visual effect by clearing the row a delayed time after the events arrive.
 
@@ -203,19 +203,19 @@ Lastly, there's a tiny sound engine so you can actually hear something. Turn on 
 
 ### 3.4 Cutting and Looping
 
-*See grid-learn-3-4.maxpat for this step.*
+*See grid-studies-3-4.maxpat for this step.*
 
 To liven up the sequencer, we will have key presses on the play row jump to the pressed position. But we also want a two-key gesture (holding down a first while pressing a second) to set the start-end loop boundaries. This requires keeping track of how many keys are being held down in the last row.
 
 First we add the `r counter` receive object above the counter. Then the rest of the patching happens inside the `p key` subpatcher.
 
-![](images/grid-learn-3-4-1.png)
+![](images/grid-studies-3-4-1.png)
 
 We unpack the incoming message and keep track of the accumulation of key ups and downs. This is accomplished by adding one for each key up and subtracting one for each key down. This looks weird as a Max patch, but tracing through it will reveal the logic.
 
 The number of keys held will gate the output of the x position of the key. When a single key is pressed the x position goes out the left outlet of the gate, setting the position of the counter. This first position is also stored for potential use later.
 
-If a second key is pressed (in this same row) while a first is held, the current x position pressed is set as the loop max (with a `/max $1/` message) and the previously pressed x position is recalled and set as the loop minimum (with a `/setmin $1/` message).
+If a second key is pressed (in this same row) while a first is held, the current x position pressed is set as the loop max (with a `max $1` message) and the previously pressed x position is recalled and set as the loop minimum (with a `setmin $1` message).
 
 
 
@@ -237,7 +237,7 @@ We've created a minimal yet intuitive interface for rapidly exploring sequences.
 
 ### Bonus
 
-See grid-learn-3-5.maxpat for a js implementation of this patch.
+See grid-studies-3-5.maxpat for a js implementation of this patch.
 
 
 

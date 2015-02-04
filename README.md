@@ -1,3 +1,3 @@
-# Grid Learning: Max
+# Grid Studies: Max
 
-[monome.github.io/grid-learning-max](http://monome.github.io/grid-learning-max)
+[monome.github.io/grid-studies-max](http://monome.github.io/grid-studies-max)

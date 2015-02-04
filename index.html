@@ -2,7 +2,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>README</title>
+<title>index</title>
 <style type="text/css">
 body {
   font-family: Helvetica, arial, sans-serif;
@@ -304,7 +304,7 @@ sup {
 </style>
 </head>
 <body>
-<h1 id="toc_0">Grid Learning: Max</h1>
+<h1 id="toc_0">Grid Studies: Max</h1>
 
 <p>Max is... (INSERT HERE)</p>
 
@@ -316,7 +316,7 @@ sup {
 
 <h2 id="toc_1">1. Connect</h2>
 
-<p><em>See grid-learn-1-1.maxpat for this section.</em></p>
+<p><em>See grid-studies-1-1.maxpat for this section.</em></p>
 
 <p>To communicate with grids we trade OSC messages with serialosc. serialosc is translates OSC messages to streams of numbers over USB.</p>
 
@@ -326,7 +326,7 @@ sup {
 
 <p>Create a new object (press N) and type <code>bpatcher serialosc</code> and then hit enter. A bpatcher window will appear, resize this to match the long rectangle.</p>
 
-<p><img src="images/grid-learn-1-1-1.png" alt=""></p>
+<p><img src="images/grid-studies-1-1-1.png" alt=""></p>
 
 <p>Plug in your grid and it will appear in the serialosc box. If you connect more than one grid, you can choose which device to communicate with via the dropdown.</p>
 
@@ -336,7 +336,7 @@ sup {
 
 <p>Messages are sent to serialosc through the top left inlet, and received out the bottom left outlet.</p>
 
-<p><em>See grid-learn-2-1.maxpat for this section.</em></p>
+<p><em>See grid-studies-2-1.maxpat for this section.</em></p>
 
 <h3 id="toc_3">2.1 Key input</h3>
 
@@ -358,7 +358,7 @@ sup {
 
 <p>Connect the output of the route to this <code>matrixctrl</code> for a graphical display of the grid&#39;s key state.</p>
 
-<p><img src="images/grid-learn-2-1-1.png" alt=""></p>
+<p><img src="images/grid-studies-2-1-1.png" alt=""></p>
 
 <h3 id="toc_4">2.2 LED output</h3>
 
@@ -380,7 +380,7 @@ sup {
 
 <pre><code>/monome/grid/led/all 0</code></pre>
 
-<p><img src="images/grid-learn-2-2-1.png" alt=""></p>
+<p><img src="images/grid-studies-2-2-1.png" alt=""></p>
 
 <h3 id="toc_5">2.3 Coupled interaction</h3>
 
@@ -392,7 +392,7 @@ sup {
 
 <p>You now have a coupled interface, where the key state is reflected by the the LEDs.</p>
 
-<p><img src="images/grid-learn-2-3-1.png" alt=""></p>
+<p><img src="images/grid-studies-2-3-1.png" alt=""></p>
 
 <h3 id="toc_6">2.4 Decoupled interaction</h3>
 
@@ -410,7 +410,7 @@ route 1</code></pre>
 
 <p>Connect this to the input of the <code>matrixctrl</code> and we have a toggle bank.</p>
 
-<p><img src="images/grid-learn-2-4-1.png" alt=""></p>
+<p><img src="images/grid-studies-2-4-1.png" alt=""></p>
 
 <h2 id="toc_7">3.0 Further</h2>
 
@@ -428,7 +428,7 @@ route 1</code></pre>
 
 <h3 id="toc_8">3.1 Toggles</h3>
 
-<p><em>See grid-learn-3-1.maxpat for this step.</em></p>
+<p><em>See grid-studies-3-1.maxpat for this step.</em></p>
 
 <p>This works identically to our previous &quot;decoupled interaction&quot; example, but we want to only use the first six rows. So we sort them out inside the /p keys/ subpatcher:</p>
 
@@ -438,17 +438,17 @@ route 6 7</code></pre>
 
 <p>By switching the first and second elements and then putting them into the route object, rows 0-5 are passed to the right outlet. We&#39;ll then pass key-down messages only to the matrix toggling.</p>
 
-<p><img src="images/grid-learn-3-1-1.png" alt=""></p>
+<p><img src="images/grid-studies-3-1-1.png" alt=""></p>
 
-<p><img src="images/grid-learn-3-1-2.png" alt=""></p>
+<p><img src="images/grid-studies-3-1-2.png" alt=""></p>
 
 <h3 id="toc_9">3.2 Play</h3>
 
-<p><em>See grid-learn-3-2.maxpat for this step.</em></p>
+<p><em>See grid-studies-3-2.maxpat for this step.</em></p>
 
 <p>We can create a &quot;play head&quot; with a simple counter.</p>
 
-<p><img src="images/grid-learn-3-2-1.png" alt=""></p>
+<p><img src="images/grid-studies-3-2-1.png" alt=""></p>
 
 <p>To see the play position on the bottom row, we will turn on the corresponding LED position after first clearing the entire row. We can clear a row by using a new OSC message:</p>
 
@@ -468,7 +468,7 @@ route 6 7</code></pre>
 
 <h3 id="toc_10">3.3 Triggers</h3>
 
-<p><em>See grid-learn-3-3.maxpat for this step.</em></p>
+<p><em>See grid-studies-3-3.maxpat for this step.</em></p>
 
 <p>As the playhead moves we will read the contents of the corresponding column and trigger events based on which toggles are turned on.</p>
 
@@ -478,7 +478,7 @@ route 6 7</code></pre>
 
 <pre><code>/monome/grid/led/set $1 6 1</code></pre>
 
-<p><img src="images/grid-learn-3-3-1.png" alt=""></p>
+<p><img src="images/grid-studies-3-3-1.png" alt=""></p>
 
 <p>Similarly to the play position display, we need to clear the row between refreshes. But since more than one event can be displayed per step, we&#39;ll want to clear only once per group of triggers. We can accomplish the desired visual effect by clearing the row a delayed time after the events arrive.</p>
 
@@ -498,19 +498,19 @@ route 6 7</code></pre>
 
 <h3 id="toc_11">3.4 Cutting and Looping</h3>
 
-<p><em>See grid-learn-3-4.maxpat for this step.</em></p>
+<p><em>See grid-studies-3-4.maxpat for this step.</em></p>
 
 <p>To liven up the sequencer, we will have key presses on the play row jump to the pressed position. But we also want a two-key gesture (holding down a first while pressing a second) to set the start-end loop boundaries. This requires keeping track of how many keys are being held down in the last row.</p>
 
 <p>First we add the <code>r counter</code> receive object above the counter. Then the rest of the patching happens inside the <code>p key</code> subpatcher.</p>
 
-<p><img src="images/grid-learn-3-4-1.png" alt=""></p>
+<p><img src="images/grid-studies-3-4-1.png" alt=""></p>
 
 <p>We unpack the incoming message and keep track of the accumulation of key ups and downs. This is accomplished by adding one for each key up and subtracting one for each key down. This looks weird as a Max patch, but tracing through it will reveal the logic.</p>
 
 <p>The number of keys held will gate the output of the x position of the key. When a single key is pressed the x position goes out the left outlet of the gate, setting the position of the counter. This first position is also stored for potential use later.</p>
 
-<p>If a second key is pressed (in this same row) while a first is held, the current x position pressed is set as the loop max (with a <code>/max $1/</code> message) and the previously pressed x position is recalled and set as the loop minimum (with a <code>/setmin $1/</code> message).</p>
+<p>If a second key is pressed (in this same row) while a first is held, the current x position pressed is set as the loop max (with a <code>max $1</code> message) and the previously pressed x position is recalled and set as the loop minimum (with a <code>setmin $1</code> message).</p>
 
 <h2 id="toc_12">Closing</h2>
 
@@ -532,7 +532,7 @@ route 6 7</code></pre>
 
 <h3 id="toc_14">Bonus</h3>
 
-<p>See grid-learn-3-5.maxpat for a js implementation of this patch.</p>
+<p>See grid-studies-3-5.maxpat for a js implementation of this patch.</p>
 
 
 </body>
