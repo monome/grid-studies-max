@@ -1,25 +1,29 @@
 # Grid Studies: Max
 
-Max is... (INSERT HERE)
+Max is a full kit of creative tools for sound, graphics, music and interactivity in a visual environment. Patching together *objects* the user can create complex interactions between software and hardware devices. The rapid and immediate nature of graphical programming lends itself well to developing for grids, making it the longtime tool of choice for monome grid-based software.
+
+This tutorial will show the basics of interaction with the grid including how a simple, yet immediate sequencer platform can be created with a small amount of code.
 
 [cycling74.com](http://cycling74.com)
 
 
-If you haven't yet run the Monome installer, do so first by going here:
+## Prerequisites
 
-[monome.org/docs/begin](http://monome.org/docs/begin)
+This lesson assumes a basic understanding of the Max patching interface. If you're absolutely new to Max it may be helpful to first go through some of the most excellent Max tutorials in-app `Help > Max Documentation`.
 
+Download Max 7: [cycling74.com/downloads](https://cycling74.com/downloads/)
 
+Download the monome installer: [monome.org/docs/begin](http://monome.org/docs/begin)
 
 ## 1. Connect
 
 *See grid-studies-1-1.maxpat for this section.*
 
-To communicate with grids we trade OSC messages with serialosc. serialosc is translates OSC messages to streams of numbers over USB.
+To communicate with grids we trade OSC messages with serialosc. serialosc translates OSC messages to streams of numbers over USB.
 
 First we will show how to talk to serialosc.
 
-Open Max and start a new patch.
+Open Max and start a new patcher.
 
 Create a new object (press N) and type `bpatcher serialosc` and then hit enter. A bpatcher window will appear, resize this to match the long rectangle.
 
@@ -46,13 +50,15 @@ Examining the output, key data fits this form:
 
 	/monome/grid/key x y z
 
-Where x,y is the position and z indicates key down (1) or key up (0).
+Where x,y is the position and z indicates key down (1) or key up (0). Note here that x,y position is 'zero referenced' so 0,0 is the upper-left key and 15,7 is the lower-right.
 
 Other messages (such as connect and disconnect) come from this same outlet, so we want to filter for the key messages.
 
 Change the `print` object to `route /monome/grid/key` and then see the output from the route.
 
-We now have a list of 3 numbers according to each key action. Use an unpack to break this down further into individual numbers. Create a 16x8 matrixctrl object by typing:
+We now have a list of 3 numbers according to each key action. Use an unpack to break this down further into individual numbers.
+
+Create a 16x8 matrixctrl object by typing:
 
 	matrixctrl @columns 16 @rows 8
 
@@ -87,7 +93,7 @@ To clear the entire grid, use the following message:
 
 Connect the output of
 
-	route /max/grid/key
+	route /monome/grid/key
 
 to the `matrixctrl` which above serialosc which changes LEDs.
 
@@ -176,7 +182,7 @@ Now when you turn on the clock, you'll see the playhead moving along the bottom 
 
 As the playhead moves we will read the contents of the corresponding column and trigger events based on which toggles are turned on.
 
-We do this by connecting a `getcolumn $1` to the toggle matrix, driven by the play position. The matrix will output a list of 0/1 values which indicate the toggle states from top to bottom. We can "extract" only the 1's (on-states) using a `zl sub 1` object. However, these values are index from 1, and we need them index from 0 (because this is how the grid indexes its LEDs) so we subtract one.
+We do this by connecting a `getcolumn $1` to the toggle matrix, driven by the play position. The matrix will output a list of 0/1 values which indicate the toggle states from top to bottom. We can "extract" only the 1's (on-states) using a `zl sub 1` object. However, these values are indexed from 1, and we need them indexed from 0 (because this is how the grid indexes its LEDs) so we subtract one.
 
 To indicate an "event" we will light up the corresponding x position in the 6th row:
 
