@@ -4,9 +4,6 @@ Max is a full kit of creative tools for sound, graphics, music and interactivity
 
 This tutorial will show the basics of interaction with the grid including how a simple, yet immediate sequencer platform can be created with a small amount of code.
 
-[cycling74.com](http://cycling74.com)
-
-
 ## Prerequisites
 
 This lesson assumes a basic understanding of the Max patching interface. If you're absolutely new to Max it may be helpful to first go through some of the most excellent Max tutorials in-app `Help > Max Documentation`.
@@ -14,6 +11,8 @@ This lesson assumes a basic understanding of the Max patching interface. If you'
 Download Max 7: [cycling74.com/downloads](https://cycling74.com/downloads/)
 
 Download the monome installer: [monome.org/docs/begin](http://monome.org/docs/begin)
+
+Download the code examples here: [github.com/monome/grid-studies-max/releases/latest](https://github.com/monome/grid-studies-max/releases/latest)
 
 ## 1. Connect
 
@@ -247,3 +246,10 @@ See grid-studies-3-5.maxpat for a js implementation of this patch.
 
 
 
+## Credits
+
+*Max* was originally designed by Miller Puckette and is actively developed by [Cycling '74](http://cycling74.com).
+
+This tutorial was created by [Brian Crabtree](http://nnnnnnnn.org) for [monome.org](monome.org).
+
+Contributions welcome. Submit a pull request to [github.com/monome/grid-studies-max](https://github.com/monome/grid-studies-max) or e-mail [info@monome.org](mailto:info@monome.org).
