@@ -1,8 +1,10 @@
 # Grid Studies: Max
 
+By design the monome grid does nothing on it's own. You the user assign it purpose and meaning: instrument, experiment, tool, toy... choose your own adventure. This grid is *intended* to be reimagined. Here we set forth to impart some introductory knowledge: potential energy for radical creative freedom.
+
 Max is a full kit of creative tools for sound, graphics, music and interactivity in a visual environment. Patching together *objects* the user can create complex interactions between software and hardware devices. The rapid and immediate nature of graphical programming lends itself well to developing for grids, making it the longtime tool of choice for monome grid-based software.
 
-This tutorial will show the basics of interaction with the grid including how a simple, yet immediate sequencer platform can be created with a small amount of code.
+This tutorial will show the basics of interfacing with the grid including how a simple, yet immediate sequencer platform can be made with a small amount of code.
 
 ## Prerequisites
 
@@ -30,7 +32,7 @@ Create a new object (press N) and type `bpatcher serialosc` and then hit enter. 
 
 Plug in your grid and it will appear in the serialosc box. If you connect more than one grid, you can choose which device to communicate with via the dropdown.
 
-Note: this box you've imbedded isn't serialosc itself, which is an invisible daemon on your computer. This box is a helper patcher to simplify using serialosc. We'll refer to this helper as serialosc, hopefully without much confusion.
+Note: this box you've embedded isn't serialosc itself, which is an invisible daemon on your computer. This box is a helper patcher to simplify using serialosc. We'll refer to this helper as serialosc, hopefully without much confusion.
 
 
 
