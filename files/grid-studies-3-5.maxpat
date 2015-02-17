@@ -121,14 +121,14 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 321.0, 295.0, 155.0, 22.0 ],
+					"patching_rect" : [ 321.0, 295.0, 169.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"filename" : "grid-learn-max.js",
+						"filename" : "grid-studies-max.js",
 						"parameter_enable" : 0
 					}
 ,
 					"style" : "",
-					"text" : "js grid-learn-max.js"
+					"text" : "js grid-studies-max.js"
 				}
 
 			}
@@ -1937,6 +1937,25 @@
 												}
 
 											}
+ ],
+										"styles" : [ 											{
+												"name" : "AudioStatus_Menu",
+												"default" : 												{
+													"bgfillcolor" : 													{
+														"type" : "color",
+														"color" : [ 0.294118, 0.313726, 0.337255, 1 ],
+														"color1" : [ 0.454902, 0.462745, 0.482353, 0.0 ],
+														"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+														"angle" : 270.0,
+														"proportion" : 0.39,
+														"autogradient" : 0
+													}
+
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
  ]
 									}
 ,
@@ -2517,21 +2536,21 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "serialosc.maxpat",
-				"bootpath" : "~/Dropbox/monome/learn/max",
+				"bootpath" : "~/Work/learn/grid-studies-max/files",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "serialosc.js",
-				"bootpath" : "~/Dropbox/monome/learn/max",
+				"bootpath" : "~/Work/learn/grid-studies-max/files",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "grid-learn-max.js",
-				"bootpath" : "~/Dropbox/monome/learn/max",
+				"name" : "grid-studies-max.js",
+				"bootpath" : "~/Work/learn/grid-studies-max/files",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
