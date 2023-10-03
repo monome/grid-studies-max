@@ -1,3 +1,3 @@
 # Grid Studies: Max
 
-[monome.org/grid-studies-max](http://monome.org/grid-studies-max)
+[monome.org/docs/grid/studies/max/](https://monome.org/docs/grid/studies/max/)
